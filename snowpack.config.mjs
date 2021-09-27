@@ -1,5 +1,10 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 export default {
+  alias: {
+    'react/jsx-runtime': 'preact/jsx-runtime',
+    'react': 'preact/compat',
+    'react-dom': 'preact/compat',
+  },
   mount: {
     public: { url: '/', static: true },
     src: { url: '/dist' },

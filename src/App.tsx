@@ -3,6 +3,14 @@ import { useState, useEffect } from 'preact/hooks';
 import logo from './logo.png';
 import './App.css';
 
+// not working ↓
+// import { Button } from '@mui/material';
+
+// works ↓
+import Button from '@mui/material/Button';
+// not working too ↓ ! the problem component !
+// import Modal from '@mui/material/Modal';
+
 function App() {
   // Create the count state.
   const [count, setCount] = useState(0);
@@ -23,14 +31,14 @@ function App() {
           Page has been open for <code>{count}</code> seconds.
         </p>
         <p>
-          <a
+          <Button
             className="App-link"
             href="https://preactjs.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             Learn Preact
-          </a>
+          </Button>
         </p>
       </header>
     </div>
