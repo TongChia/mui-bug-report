@@ -8,8 +8,10 @@ import './App.css';
 
 // works ↓
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 // not working too ↓ ! the problem component !
 // import Modal from '@mui/material/Modal';
+import Modal from '@mui/material/Modal/Modal'; // skip index
 
 function App() {
   // Create the count state.
@@ -20,6 +22,11 @@ function App() {
     return () => clearTimeout(timer);
   }, [count, setCount]);
   // Return the App component.
+
+  const [open, setOpen] = useState(false);
+  const handleClose = () => setOpen(false);
+  const handleToggle = () => setOpen(!open);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -39,6 +46,18 @@ function App() {
           >
             Learn Preact
           </Button>
+          <Button onClick={handleToggle}>Show Modal</Button>
+          <Modal
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={open}
+            onClick={handleClose}
+          >
+            {(
+              <Box sx={{width: 100, height: 100, background: 'red', color: 'white'}}>
+                <h1>Hello</h1>
+              </Box>
+            ) as JSX.Element}
+          </Modal>
         </p>
       </header>
     </div>
